@@ -92,14 +92,18 @@ function charts(sample){
     
 
 
-        var barData = [
-            {
-              x: ['otu_ids'],
-              y: ['sample_values'],
-              type: 'bar'
-            }
-          ];
+          let graphChart = [{
+            x: sample_values.slice(0,10).reverse(),
+            y: otu_ids.slice(0,10).map(id => 'OTU '+ id).reverse(),
+            text: otu_labels.slice(0,10).reverse(),
+            type: 'bar',
+            orientation: 'h'
+        }]
+
+        let layout = {
+            title: `Top 10 OTUs Found`
+          };
           
-          Plotly.newPlot('bar', barData, barLayout);
+          Plotly.newPlot('bar', graphChart, layout);
     })
 }
